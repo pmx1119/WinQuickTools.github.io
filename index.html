@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinQuickTools 官网</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .nav {
+            background-color: #444;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            height: 30vh;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .content.show {
+            opacity: 1;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .banner {
+            background-image: url('banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>WinQuickTools 官网</h1>
+    </div>
+    <div class="nav">
+        <a href="#home" onclick="scrollToSection('home')">首页</a>
+        <a href="#features" onclick="scrollToSection('features')">功能</a>
+        <a href="#tutorial" onclick="scrollToSection('tutorial')">使用教程</a>
+        <a href="#download" onclick="scrollToSection('download')">下载</a>
+        <a href="#help" onclick="scrollToSection('help')">帮助</a>
+        <a href="#about" onclick="scrollToSection('about')">关于我们</a>
+    </div>
+    <div class="content" id="home">
+        <h2>欢迎来到 WinQuickTools 官网</h2>
+        <p>WinQuickTools 是一个功能丰富的命令行工具，旨在提供便捷的系统管理和日常操作工具。无论您是需要管理文件、查看系统信息，还是进行网络工具操作，WinQuickTools 都能为您提供帮助。</p>
+    </div>
+    <div class="content" id="features">
+        <h2>功能特点</h2>
+        <p>WinQuickTools 包含以下功能：</p>
+        <ul>
+            <li>文件管理：快速打开文件、结束进程、格式化磁盘等。</li>
+            <li>系统信息：显示CPU、内存、硬盘等信息。</li>
+            <li>网络工具：执行ping、tracert等网络命令。</li>
+            <li>系统工具：重启、关机、修复系统文件等。</li>
+            <li>其他功能：时间显示、计算器、字符画生成等。</li>
+        </ul>
+    </div>
+    <div class="content" id="tutorial">
+        <h2>使用教程</h2>
+        <p>WinQuickTools 的使用教程如下：</p>
+        <ol>
+            <li>下载并解压WinQuickTools。</li>
+            <li>运行`WinQuickTools`启动程序。</li>
+            <li>按照命令行提示操作。</li>
+        </ol>
+    </div>
+    <div class="content" id="download">
+        <h2>下载</h2>
+        <p>您可以从这里下载 WinQuickTools 的最新版本。</p>
+        <a href="https://example.com/winquicktools/download" class="button">点击这里下载</a>
+    </div>
+    <div class="content" id="help">
+        <h2>帮助</h2>
+        <p>如果您在使用 WinQuickTools 时遇到任何问题，请查看以下帮助文档。</p>
+        <a href="https://example.com/winquicktools/help" class="button">查看帮助文档</a>
+    </div>
+    <div class="content" id="about">
+        <h2>关于我们</h2>
+        <p>WinQuickTools 由 pmx1119 开发，旨在提供便捷的系统管理和日常操作工具。我们致力于不断改进和增加新功能，以提升用户体验。</p>
+    </div>
+    <div class="footer">
+        &copy; 2024 WinQuickTools. 保留所有权利。
+    </div>
+
+    <script>
+        // 平滑滚动到指定ID的元素
+        function scrollToSection(sectionId) {
+            var element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 动态显示内容区域
+        function showContent(sectionId) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                section.classList.remove('fade-in', 'show');
+            });
+
+            var targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('fade-in');
+                setTimeout(function() {
+                    targetSection.classList.add('show');
+                }, 10); // 确保动画效果
+            }
+        }
+
+        // 监听页面滚动事件，动态添加类名以触发动画
+        window.addEventListener('scroll', function() {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                var sectionTop = section.getBoundingClientRect().top;
+                var sectionHeight = section.offsetHeight;
+                var viewportHeight = window.innerHeight;
+
+                if (sectionTop >= 0 && sectionTop <= viewportHeight - sectionHeight / 2) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
+            });
+        });
+
+        // 默认显示首页内容
+        showContent('home');
+    </script>
+</body>
+</html>
